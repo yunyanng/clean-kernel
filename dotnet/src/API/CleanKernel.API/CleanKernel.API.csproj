@@ -49,6 +49,7 @@
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
+    <PackageReference Include="CleanKernel.EventBus" Version="1.0.0-alpha.1" />
     <PackageReference Include="Dapr.Client" Version="1.9.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="11.1.0" />
@@ -56,10 +57,6 @@
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.1-dev-00293" />
     <PackageReference Include="Serilog.Sinks.Http" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\EventBus\CleanKernel.EventBus\CleanKernel.EventBus.csproj" />
   </ItemGroup>
 
 </Project>
