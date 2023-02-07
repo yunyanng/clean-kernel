@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	  <AnalysisLevel>latest-all</AnalysisLevel>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.0-alpha.1</Version>
+    <Authors>YunYan Ng</Authors>
+    <Description>Seedwork for creating Domain Aggregates according to Domain-Driven Design(DDD)</Description>
+    <Copyright>Copyright (c) YunYan Ng 2023</Copyright>
+    <PackageProjectUrl>https://github.com/yunyanng/clean-kernel</PackageProjectUrl>
+    <PackageIcon>icon128.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/yunyanng/clean-kernel/tree/main/dotnet/src/Domain/CleanKernel.Domain</RepositoryUrl>
+    <PackageTags>domain;ddd;clean;architecture;sharedkernel;seedwork</PackageTags>
+    <PackageReleaseNotes>1. Alpha phase</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\images\icon128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="MediatR" Version="11.1.0" />
+  </ItemGroup>
+
+</Project>
