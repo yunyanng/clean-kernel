@@ -2,12 +2,12 @@
 
 public static class MvcExtensions
 {
-    public static IServiceCollection AddCustomMvc(this IServiceCollection services, Assembly assembly)
+    public static IServiceCollection AddCleanMvc<TDomainException>(this IServiceCollection services, Assembly assembly)
     {
         // Add framework services.
         services.AddControllers(options =>
         {
-            options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            options.Filters.Add(typeof(HttpGlobalExceptionFilter<TDomainException>));
         })
             // Added for functional tests
             .AddApplicationPart(assembly)

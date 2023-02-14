@@ -1,23 +1,21 @@
 ﻿namespace CleanKernel.API.Extensions.Mvc;
 
-public partial class HttpGlobalExceptionFilter : IExceptionFilter
+public partial class HttpGlobalExceptionFilter<TDomainException> : IExceptionFilter
 {
     private readonly IWebHostEnvironment _env;
-    private readonly ILogger<HttpGlobalExceptionFilter> _logger;
-    private readonly Type _domainExceptionType;
+    private readonly ILogger<HttpGlobalExceptionFilter<TDomainException>> _logger;
 
-    public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger, Type domainExceptionType)
+    public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter<TDomainException>> logger)
     {
         _env = env;
         _logger = logger;
-        _domainExceptionType = domainExceptionType;
     }
 
     public void OnException([NotNull] ExceptionContext context)
     {
         LogError(context.Exception, context.Exception.Message);
 
-        if (context.Exception.GetType() == _domainExceptionType)
+        if (context.Exception.GetType() is TDomainException)
         {
             var problemDetails = new ValidationProblemDetails()
             {
