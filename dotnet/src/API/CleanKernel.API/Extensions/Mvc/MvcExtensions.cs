@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.DependencyInjection;
+﻿using CleanKernel.API.Infrastructure.JsonConverters;
+
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class MvcExtensions
 {
@@ -11,7 +13,11 @@ public static class MvcExtensions
         })
             // Added for functional tests
             .AddApplicationPart(assembly)
-            .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.WriteIndented = true;
+                options.JsonSerializerOptions.Converters.Add(new ExceptionJsonConverter<Exception>());
+            });
 
         services.AddCors(options =>
         {

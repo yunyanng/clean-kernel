@@ -4,6 +4,7 @@ global using System.Net;
 global using System.Reflection;
 global using System.Text;
 global using System.Text.Json;
+global using System.Text.Json.Serialization;
 global using Ardalis.GuardClauses;
 global using Asp.Versioning;
 global using Asp.Versioning.ApiExplorer;
