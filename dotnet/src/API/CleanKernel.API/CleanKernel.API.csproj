@@ -7,7 +7,7 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-all</AnalysisLevel>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0-alpha.3</Version>
+    <Version>1.0.0-alpha.4</Version>
     <Authors>YunYan Ng</Authors>
     <Description>API building blocks for building microservices following Domain-Driven Design(DDD) and Clean Architecture</Description>
     <Copyright>Copyright (c) YunYan Ng 2023</Copyright>
