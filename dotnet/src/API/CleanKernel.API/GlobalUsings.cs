@@ -16,6 +16,7 @@ global using CleanKernel.API.Infrastructure.EventBus;
 global using CleanKernel.EventBus.Abstractions;
 global using CleanKernel.EventBus.Events;
 global using Dapr.Client;
+global using FastEndpoints.Swagger.Swashbuckle;
 global using FluentValidation;
 global using FluentValidation.Results;
 global using HealthChecks.UI.Client;

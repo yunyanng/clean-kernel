@@ -51,6 +51,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
     <PackageReference Include="CleanKernel.EventBus" Version="1.0.0-alpha.2" />
     <PackageReference Include="Dapr.Client" Version="1.10.0" />
+    <PackageReference Include="FastEndpoints.Swagger.Swashbuckle" Version="2.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
