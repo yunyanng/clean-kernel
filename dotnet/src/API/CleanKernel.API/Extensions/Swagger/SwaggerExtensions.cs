@@ -34,6 +34,7 @@ public static class SwaggerExtensions
             });
 
             options.OperationFilter<AuthorizeCheckOperationFilter>();
+            options.OperationFilter<FastEndpointsOperationFilter>();
             options.OperationFilter<SwaggerDefaultValues>();
         });
 
