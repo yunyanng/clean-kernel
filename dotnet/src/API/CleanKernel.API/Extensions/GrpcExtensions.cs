@@ -1,8 +1,8 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection;
 
-public static class KestrelExtensions
+public static class GrpcExtensions
 {
-    public static void ConfigureKestrel([NotNull] this WebApplicationBuilder builder)
+    public static void ConfigureKestrelGrpc([NotNull] this WebApplicationBuilder builder)
     {
         builder.WebHost.ConfigureKestrel(options =>
         {
