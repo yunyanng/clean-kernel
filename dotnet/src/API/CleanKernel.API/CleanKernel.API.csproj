@@ -7,7 +7,7 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-all</AnalysisLevel>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0-alpha.8</Version>
+    <Version>1.0.0-alpha.9</Version>
     <Authors>YunYan Ng</Authors>
     <Description>API building blocks for building microservices following Domain-Driven Design(DDD) and Clean Architecture</Description>
     <Copyright>Copyright (c) YunYan Ng 2023</Copyright>
@@ -50,8 +50,9 @@
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
     <PackageReference Include="CleanKernel.EventBus" Version="1.0.0-alpha.2" />
+    <PackageReference Include="Dapr.Actors.AspNetCore" Version="1.10.0" />
     <PackageReference Include="Dapr.Client" Version="1.10.0" />
-    <PackageReference Include="FastEndpoints.Swagger" Version="5.7.2.7-beta" />
+    <PackageReference Include="FastEndpoints.Swagger" Version="5.8.0.2-beta" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
