@@ -80,6 +80,8 @@ public static class SwaggerExtensions
                         }
                     });
                 }
+
+                s.EndpointFilter(ep => ep.EndpointTags?.Contains("IntegrationEventHandler") is false or null);
             });
         }
     }
