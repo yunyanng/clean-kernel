@@ -10,7 +10,6 @@ global using Asp.Versioning.ApiExplorer;
 global using CleanKernel.API.Extensions;
 global using CleanKernel.API.Infrastructure.ActionResults;
 global using CleanKernel.API.Infrastructure.EventBus;
-global using CleanKernel.API.Infrastructure.Idempotency;
 global using CleanKernel.API.Infrastructure.JsonConverters;
 global using CleanKernel.EventBus.Events;
 global using Dapr.Actors;
