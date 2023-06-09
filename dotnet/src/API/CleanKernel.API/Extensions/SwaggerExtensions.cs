@@ -17,71 +17,74 @@ public static class SwaggerExtensions
 
         foreach (var apiVersionDescription in apiVersionDescriptionProvider.ApiVersionDescriptions)
         {
-            services.AddSwaggerDoc(s =>
+            services.SwaggerDocument(o =>
             {
-                s.DocumentName = apiVersionDescription.GroupName;
-                s.Title = title;
-                s.Version = apiVersionDescription.ApiVersion.ToString();
-
-                var text = new StringBuilder(description);
-
-                if (apiVersionDescription.IsDeprecated)
+                o.DocumentSettings = s =>
                 {
-                    text.Append(" This API version has been deprecated.");
-                }
+                    s.DocumentName = apiVersionDescription.GroupName;
+                    s.Title = title;
+                    s.Version = apiVersionDescription.ApiVersion.ToString();
 
-                if (apiVersionDescription.SunsetPolicy is SunsetPolicy policy)
-                {
-                    if (policy.Date is DateTimeOffset when)
+                    var text = new StringBuilder(description);
+
+                    if (apiVersionDescription.IsDeprecated)
                     {
-                        text.Append(" The API will be sunset on ")
-                            .Append(when.Date.ToShortDateString())
-                            .Append('.');
+                        text.Append(" This API version has been deprecated.");
                     }
 
-                    if (policy.HasLinks)
+                    if (apiVersionDescription.SunsetPolicy is SunsetPolicy policy)
                     {
-                        text.AppendLine();
-
-                        for (var i = 0; i < policy.Links.Count; i++)
+                        if (policy.Date is DateTimeOffset when)
                         {
-                            var link = policy.Links[i];
+                            text.Append(" The API will be sunset on ")
+                                .Append(when.Date.ToShortDateString())
+                                .Append('.');
+                        }
 
-                            if (link.Type == "text/html")
+                        if (policy.HasLinks)
+                        {
+                            text.AppendLine();
+
+                            for (var i = 0; i < policy.Links.Count; i++)
                             {
-                                text.AppendLine();
+                                var link = policy.Links[i];
 
-                                if (link.Title.HasValue)
+                                if (link.Type == "text/html")
                                 {
-                                    text.Append(link.Title.Value).Append(": ");
-                                }
+                                    text.AppendLine();
 
-                                text.Append(link.LinkTarget.OriginalString);
+                                    if (link.Title.HasValue)
+                                    {
+                                        text.Append(link.Title.Value).Append(": ");
+                                    }
+
+                                    text.Append(link.LinkTarget.OriginalString);
+                                }
                             }
                         }
                     }
-                }
 
-                s.Description = text.ToString();
+                    s.Description = text.ToString();
 
-                if (schemeType is not null)
-                {
-                    s.AddAuth(schemeName ?? schemeType.GetGenericTypeName(), new()
+                    if (schemeType is not null)
                     {
-                        Type = schemeType.Value,
-                        Flows = new()
+                        s.AddAuth(schemeName ?? schemeType.GetGenericTypeName(), new()
                         {
-                            Implicit = new()
+                            Type = schemeType.Value,
+                            Flows = new()
                             {
-                                AuthorizationUrl = identityUrlExternal is null ? null : new Uri($"{identityUrlExternal}/connect/authorize").ToString(),
-                                TokenUrl = identityUrlExternal is null ? null : new Uri($"{identityUrlExternal}/connect/token").ToString(),
-                                Scopes = scopes ?? new()
+                                Implicit = new()
+                                {
+                                    AuthorizationUrl = identityUrlExternal is null ? null : new Uri($"{identityUrlExternal}/connect/authorize").ToString(),
+                                    TokenUrl = identityUrlExternal is null ? null : new Uri($"{identityUrlExternal}/connect/token").ToString(),
+                                    Scopes = scopes ?? new()
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
+                };
 
-                s.EndpointFilter(ep => ep.EndpointTags?.Contains("IntegrationEventHandler") is false or null);
+                o.EndpointFilter = ep => ep.EndpointTags?.Contains("IntegrationEventHandler") is false or null;
             });
         }
     }
