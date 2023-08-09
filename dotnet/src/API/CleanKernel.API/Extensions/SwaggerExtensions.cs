@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.DependencyInjection;
+﻿using NSwag.Generation.AspNetCore;
+
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class SwaggerExtensions
 {
@@ -6,12 +8,7 @@ public static class SwaggerExtensions
         this IServiceCollection services,
         string title,
         string description,
-        OpenApiSecuritySchemeType? schemeType = null,
-        string? schemeName = null,
-        Dictionary<string, string>? scopes = null,
-#pragma warning disable CA1054 // URI-like parameters should not be strings
-        string? identityUrlExternal = null)
-#pragma warning restore CA1054 // URI-like parameters should not be strings
+        Action<AspNetCoreOpenApiDocumentGeneratorSettings>? documentSettings)
     {
         var apiVersionDescriptionProvider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
 
@@ -66,21 +63,9 @@ public static class SwaggerExtensions
 
                     s.Description = text.ToString();
 
-                    if (schemeType is not null)
+                    if (documentSettings is not null)
                     {
-                        s.AddAuth(schemeName ?? schemeType.GetGenericTypeName(), new()
-                        {
-                            Type = schemeType.Value,
-                            Flows = new()
-                            {
-                                Implicit = new()
-                                {
-                                    AuthorizationUrl = identityUrlExternal is null ? null : new Uri($"{identityUrlExternal}/connect/authorize").ToString(),
-                                    TokenUrl = identityUrlExternal is null ? null : new Uri($"{identityUrlExternal}/connect/token").ToString(),
-                                    Scopes = scopes ?? new()
-                                }
-                            }
-                        });
+                        documentSettings(s);
                     }
                 };
 
