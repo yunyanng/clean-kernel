@@ -7,7 +7,7 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-all</AnalysisLevel>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0-alpha.2</Version>
+    <Version>1.0.0-alpha.3</Version>
     <Authors>YunYan Ng</Authors>
     <Description>Event Bus building blocks for building microservices</Description>
     <Copyright>Copyright (c) YunYan Ng 2023</Copyright>
@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.1.1" />
   </ItemGroup>
 
 </Project>
